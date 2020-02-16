@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notes App</title>
+    <style>
+        footer{
+            bottom:0;
+            height: 10%;
+            background-color: aqua;
+            width: 100%;
+        }
+        header{
+            top: 0;
+            height: 10%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<header>
+    {{>header}}
+</header>
+<body>
+    {{message}}
+    <p>Add Note:</p>
+    <form id="AddNote" action="AddNote" method="GET">
+        <input type="text" name="title" placeholder="Title">
+        <br>
+        <input type="text" name="body" placeholder="Body">
+        <br>
+        <input type="submit">
+    </form>
+    <p>Remove Note</p>
+    <form id="RemoveNote" action="RemoveNote" method="GET">
+        <input type="text" name="title" placeholder="Title">
+        <br>
+        <input type="submit">
+    </form>
+    <form id="ListNotes" action="ListNotes" method="GET">
+        <button type="submit">List Notes</button>
+    </form>
+    <form action="ReadNote" method="GET">
+        {{#each notes}}
+            <input type="radio" name="title" value="{{title}}">    <li>{{title}}</li>
+        {{/each}}
+        {{#if notes}}
+            <button type="submit">Read this Note</button>
+        {{/if}}
+    </form>
+    <p>Read Note</p>
+    <form id="Read Note" action="ReadNote" method="GET">
+        <input type="text" name="title" placeholder="Title">
+        <br>
+        <input type="submit">
+    </form>
+    <p><h4>{{note.title}}</h4>
+    {{note.body}}</p>
+</body> 
+<footer>
+    {{>footer}}
+</footer>
+</html>
